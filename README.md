@@ -26,3 +26,19 @@ Then visit [http://localhost:8080](http://localhost:8080).
 - HTML / CSS / vanilla JS
 - [Chart.js](https://www.chartjs.org/) (CDN)
 - Google Fonts (Outfit, IBM Plex Mono)
+
+## Deploy to AWS (S3)
+
+Requires AWS credentials with permission to create/manage S3 buckets and objects.
+
+```bash
+export AWS_ACCESS_KEY_ID=...
+export AWS_SECRET_ACCESS_KEY=...
+export AWS_REGION=us-east-1   # optional
+# optional: export AWS_S3_BUCKET=my-unique-bucket-name
+
+./deploy/aws-s3.sh
+```
+
+The script creates a public S3 website bucket (if needed), uploads the static files, and prints the website URL.
+
