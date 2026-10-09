@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Token Atlas — Global Usage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" defer></script>
+    <script src="data.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="atmosphere" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <div>
+          <p class="brand-name">Token Atlas</p>
+          <p class="brand-sub">Global usage console</p>
+        </div>
+      </div>
+      <div class="topbar-meta">
+        <span class="pill" id="sample-badge">Sample data</span>
+        <span class="meta-line" id="as-of"></span>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero-metrics" aria-label="Summary metrics">
+        <article class="metric">
+          <p class="metric-label">Total tokens (30d)</p>
+          <p class="metric-value" id="metric-total">—</p>
+          <p class="metric-delta up" id="metric-total-delta">—</p>
+        </article>
+        <article class="metric">
+          <p class="metric-label">Input / output</p>
+          <p class="metric-value" id="metric-io">—</p>
+          <p class="metric-delta" id="metric-io-split">—</p>
+        </article>
+        <article class="metric">
+          <p class="metric-label">Active regions</p>
+          <p class="metric-value" id="metric-regions">—</p>
+          <p class="metric-delta" id="metric-top-region">—</p>
+        </article>
+        <article class="metric">
+          <p class="metric-label">Est. spend</p>
+          <p class="metric-value" id="metric-spend">—</p>
+          <p class="metric-delta down" id="metric-spend-delta">—</p>
+        </article>
+      </section>
+
+      <section class="panel panel-wide">
+        <div class="panel-head">
+          <h2>Daily token volume</h2>
+          <p>Worldwide input and output tokens for the last 30 days</p>
+        </div>
+        <div class="chart-wrap">
+          <canvas id="trend-chart" height="110"></canvas>
+        </div>
+      </section>
+
+      <div class="grid-two">
+        <section class="panel">
+          <div class="panel-head">
+            <h2>By region</h2>
+            <p>Share of total token consumption</p>
+          </div>
+          <div class="chart-wrap chart-square">
+            <canvas id="region-chart"></canvas>
+          </div>
+          <ul class="legend-list" id="region-legend"></ul>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h2>By model</h2>
+            <p>Tokens routed per model family</p>
+          </div>
+          <div class="chart-wrap">
+            <canvas id="model-chart" height="220"></canvas>
+          </div>
+        </section>
+      </div>
+
+      <section class="panel panel-wide">
+        <div class="panel-head">
+          <h2>Top consumers</h2>
+          <p>Workspaces ranked by 30-day token usage</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Workspace</th>
+                <th>Region</th>
+                <th>Tokens</th>
+                <th>Share</th>
+                <th>Trend</th>
+              </tr>
+            </thead>
+            <tbody id="consumers-body"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Token Atlas · demo dashboard with generated sample data · not live telemetry</p>
+    </footer>
+  </body>
+</html>
